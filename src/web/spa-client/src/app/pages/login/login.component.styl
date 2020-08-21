@@ -1,0 +1,22 @@
+@require '../../../consts.styl';
+@require '../../../mixins.styl';
+
+.login {
+  flex(column, baseline, center);
+  width: 100%;
+
+  &__input {
+    position: relative;
+    height: 40px;
+
+    input {
+      border: solid 1px $primary-color;
+    }
+
+    &--icon {
+      position: absolute;
+      top: 50%;
+      transform: translate(50%);
+    }
+  }
+}

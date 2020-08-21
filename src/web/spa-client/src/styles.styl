@@ -1,1 +1,39 @@
-/* You can add global styles to this file, and also import other style files */
+@require './consts.styl';
+
+* {
+  font-family: Roboto, 'Helvetica Neue', Arial, Helvetica, sans-serif;
+
+  &:focus {
+    outline: $primary-color !important;
+    outline-offset: 2px !important;
+  }
+}
+
+html {
+  height: 100%;
+
+  body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    background: $white-color;
+    font-size: $default-font-size;
+    line-height: 1.8em;
+  }
+}
+
+@font-face {
+  font-family: Roboto-Regular;
+  src: url('./assets/fonts/Roboto-Regular.ttf');
+}
+
+@font-face {
+  font-family: Roboto-Medium;
+  src: url('./assets/fonts/Roboto-Medium.ttf');
+}
+
+@font-face {
+  font-family: Roboto-Bold;
+  src: url('./assets/fonts/Roboto-Bold.ttf');
+}
