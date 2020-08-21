@@ -21,6 +21,27 @@ html {
     font-size: $default-font-size;
     line-height: 1.8em;
   }
+
+  button{
+    cursor: pointer !important;
+  }
+
+}
+
+.btn {
+  &-primary {
+    height: 40px;
+    width: 100%;
+    border-radius: 5px;
+    font-size: $default-font-size + 2;
+    border: solid 1px $white-color;
+    color: $white-color;
+    background-color: $primary-color;
+
+    &:hover {
+      background-color: darken($primary-color, 10%);
+    }
+  }
 }
 
 @font-face {
