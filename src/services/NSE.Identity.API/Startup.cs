@@ -22,6 +22,7 @@ namespace NSE.Identity.API
             services.AddScoped<DatabaseService>();
             services.AddIdentityConfiguration();
             services.AddTokenConfiguration(Configuration);
+            services.AddSwaggerConfiguration();
 
             services.AddControllers().ConfigureApiBehaviorOptions(opt => opt.SuppressModelStateInvalidFilter = true);
         }
