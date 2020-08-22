@@ -1,4 +1,4 @@
-# enterprise-application-ecommerce
+# Backend
 Uma aplicação E-Commerce desenvolvida em .Net Core 3.1 utilizando arquitetura distribuída.
 
 # SpaClient
