@@ -7,6 +7,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { WaitButtonComponent } from './components/wait-button/wait-button.component';
 import { TextInputComponent } from './components/text-input/text-input.component';
+import { CheckboxComponent } from './components/checkbox-input/checkbox-input.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { TextInputComponent } from './components/text-input/text-input.component
     LoginComponent,
     RegisterComponent,
     WaitButtonComponent,
-    TextInputComponent
+    TextInputComponent,
+    CheckboxComponent
   ],
   imports: [
     BrowserModule,

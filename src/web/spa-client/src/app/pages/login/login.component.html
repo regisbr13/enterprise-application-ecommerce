@@ -1,12 +1,19 @@
 <div class="login">
-  <h1> Login Account </h1>
-  <div class="login__input">
-    <label for="email">Login:</label>
-    <input type="email" name="Email">
+  <div class="login__form">
+    <div class="login__form__item">
+      <label class="login__form__item__title">Sign In</label>
+      <br aria-hidden="true">
+      <label class="login__form__item__subtitle">Hello! Let's get started</label>
+    </div>
+    <div class="login__form__item">
+      <text-input placeholder="Email" aria-required="true" type="email"></text-input>
+    </div>
+    <div class="login__form__item">
+      <text-input placeholder="Password" aria-required="true" type="password"></text-input>
+    </div>
+    <div class="login__form__item">
+      <wait-button text="Sign In" classes="btn-primary btn-full"></wait-button>
+    </div>
+    <app-checkbox label="Manter conectado"></app-checkbox>
   </div>
-  <div class="login__input">
-    <label for="password">Senha:</label>
-    <input type="password" id="password" name="password">
-  </div>
-  <wait-button text="Log in" class="btn-primary"></wait-button>
 </div>

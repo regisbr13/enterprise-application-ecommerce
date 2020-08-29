@@ -4,7 +4,7 @@
   font-family: Roboto, 'Helvetica Neue', Arial, Helvetica, sans-serif;
 
   &:focus {
-    outline: $primary-color !important;
+    outline-color: $primary-color !important;
     outline-offset: 2px !important;
   }
 }
@@ -22,18 +22,19 @@ html {
     line-height: 1.8em;
   }
 
-  button{
+  button {
     cursor: pointer !important;
   }
-
 }
 
 .btn {
+  height: 35px;
+  width: 100%;
+  border-radius: $default-radius;
+  font-size: $default-font-size + 2;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+
   &-primary {
-    height: 40px;
-    width: 100%;
-    border-radius: 5px;
-    font-size: $default-font-size + 2;
     border: solid 1px $white-color;
     color: $white-color;
     background-color: $primary-color;
@@ -42,6 +43,34 @@ html {
       background-color: darken($primary-color, 10%);
     }
   }
+
+  &-secondary {
+    border: solid 1px $white-color;
+    color: $white-color;
+    background-color: $secondary-color;
+
+    &:hover {
+      background-color: darken($secondary-color, 10%);
+    }
+  }
+
+  &-outline {
+    color: $primary-color;
+    border: $default-border-outline;
+    background-color: $white-color;
+
+    &:hover {
+      background-color: darken($white-color, 10%);
+    }
+  }
+
+  &-full {
+    width: 100%;
+  }
+}
+
+app-login, app-register {
+  width: 50%;
 }
 
 @font-face {

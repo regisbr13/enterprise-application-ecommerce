@@ -8,13 +8,24 @@ import { Component, OnInit, Input } from '@angular/core';
 export class TextInputComponent implements OnInit {
 
   @Input() placeholder: string;
-  @Input() text: string;
+  @Input() label: string;
   @Input() iconClass: string;
   @Input() type: string;
+  @Input() descriptionAriaLabel: string;
+  @Input() subText: string;
+  @Input() maxLength: number;
+  @Input() textOptional: string;
+  @Input() value: string;
+  @Input() inputFocus: boolean;
+  @Input() ariaRequired: boolean;
 
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  processChangeEvent = () => {
+
   }
 
 }

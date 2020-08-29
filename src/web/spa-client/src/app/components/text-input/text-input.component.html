@@ -1,10 +1,15 @@
-<template>
-  <div class="login__input">
-    <label for="email">Login:</label>
-    <input type="email" name="Email">
+<div ngClass="text-input">
+  <label *ngIf="label" class="text-input__label">{{label}}
+    <span *ngIf="hasTextOptional" class="sub-description">{{textOptional}}</span></label>
+  <div class="">
+    <input class="text-input__input" type="{{type}}" blur.trigger="processBlurEvent()" (change)="processChangeEvent()" placeholder="
+        {{placeholder}}" value="{{value}}" maxlength="maxLength && optional" [attr.aria-label]="descriptionAriaLabel"
+      [attr.aria-required]="ariaRequired" focus="inputFocus" aria-describedby="subtext" />
+    <div *ngIf="subText" class="text-input__subtext-container">
+      <span class="text-input__subtext" id="subtext">{{subText}}</span>
+      <div *ngIf="hasMaxLength">
+        <span class="text-input-subtext">{{value ? value.length : 0 }}/{{maxLength}}</span>
+      </div>
+    </div>
   </div>
-  <div class="login__input">
-    <label for="password">Senha:</label>
-    <input type="password" id="password" name="password">
-  </div>
-</template>
+</div>

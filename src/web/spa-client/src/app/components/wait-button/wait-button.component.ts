@@ -13,7 +13,7 @@ export class WaitButtonComponent implements OnInit {
   @Input() type: string;
   @Input() descriptionAriaLabel: string;
   @Input() click: () => void | Promise<any>;
-  @Input() class: string;
+  @Input() classes: string;
   isWaiting = false;
 
   ngOnInit(): void {

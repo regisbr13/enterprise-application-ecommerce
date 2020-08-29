@@ -1,8 +1,8 @@
 @require '../consts.styl';
+@require '../mixins.styl';
 
 .home {
-  display: flex;
-  flex-direction: row;
+  flex(row, flex-start, flex-start);
   width: 100%;
   height: 100%;
   background: $primary-color;
@@ -14,24 +14,34 @@
     padding: 0;
     overflow: hidden;
 
-    &--message {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
+    &__message {
+      flex(column, center, center);
       padding: 5%;
       color: $white-color;
       height: 100%;
     }
 
-    &--form {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100%;
+    &__form {
+      flex(column, center, center);
+      min-height: 100%;
       padding: 5%;
       width: 100%;
-      background-color: $white-color;
+      background-color: $another-grey;
+
+      &--logo {
+        img {
+          width: 100%;
+        }
+      }
+
+      &--back {
+        width: 30px;
+      }
+
+      &--next {
+        margin-top: 20px;
+        width: 50%;
+      }
     }
   }
 }
