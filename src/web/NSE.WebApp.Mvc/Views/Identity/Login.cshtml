@@ -1,0 +1,37 @@
+﻿@model NSE.WebApp.Mvc.Models.UserLogin
+
+@{
+    ViewData["Title"] = "Entrar";
+}
+
+<h4>Faça login</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-route-returnurl="@ViewData["ReturnUrl"]" asp-action="Login">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Email" class="control-label"></label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Password" class="control-label"></label>
+                <input asp-for="Password" class="form-control" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Entrar" class="btn btn-primary" />
+                <a asp-action="register" class="btn btn-outline-dark">Registrar</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index" asp-controller="home">Voltar para home</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

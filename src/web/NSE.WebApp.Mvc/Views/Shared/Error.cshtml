@@ -1,0 +1,21 @@
+﻿@model NSE.WebApp.Mvc.Models.ViewModels.ErrorViewModel
+
+@{
+    ViewData["Title"] = $"Erro {Model.Code}";
+}
+
+@{
+    if (Model == null)
+    {
+        <div>
+            <h1>Ooops! Ocorreu um erro!</h1>
+            <h2 class="text-danger">Nosso time será avisado e iremos corrigir em breve!</h2>
+        </div>
+    }
+    else
+    {
+        <h1>@Model.Title</h1>
+        <h2 class="text-danger">@Model.Message</h2>
+        <h3>Em caso de dúvida contate o suporte <a href="mailto: support@email.com">support@email.com</a></h3>
+    }
+}
