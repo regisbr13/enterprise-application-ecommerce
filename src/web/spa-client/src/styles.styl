@@ -1,10 +1,24 @@
 @require './consts.styl';
 
+@keyframes fadein {
+  0% {
+    opacity: 0;
+  }
+
+  50% {
+    opacity: 0.5;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
 * {
   font-family: Roboto, 'Helvetica Neue', Arial, Helvetica, sans-serif;
 
   &:focus {
-    outline-color: $primary-color !important;
+    outline: 2px solid $primary-color;
     outline-offset: 2px !important;
   }
 }

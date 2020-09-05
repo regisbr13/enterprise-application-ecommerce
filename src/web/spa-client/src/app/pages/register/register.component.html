@@ -6,20 +6,20 @@
       <label class="register__form__item__subtitle">Create your account!</label>
     </div>
     <div class="register__form__item">
-      <text-input placeholder="E-mail" aria-required="true" type="email" value="newUser.Email">
+      <text-input placeholder="E-mail" aria-required="true" type="email" [(inputModel)]="newUser.Email">
       </text-input>
     </div>
     <div class="register__form__item">
-      <text-input placeholder="Password" aria-required="true" type="password" value="password"></text-input>
+      <text-input placeholder="Password" aria-required="true" type="password" [(inputModel)]="password"></text-input>
     </div>
     <div class="register__form__item">
-      <text-input placeholder="Repeat password" aria-required="true" type="password" value="checkPassword"></text-input>
+      <text-input placeholder="Repeat password" type="password" aria-required="true" [(inputModel)]="checkPassword"></text-input>
     </div>
     <div class="register__form__item">
-      <text-input placeholder="Name" aria-required="true" type="text" value="newUser.Name"></text-input>
+      <text-input placeholder="Name" aria-required="true" type="text" [(inputModel)]="newUser.Name"></text-input>
     </div>
     <div class="register__form__item">
-      <text-input placeholder="Telefone" aria-required="true" type="text" value="newUser.Telefone"></text-input>
+      <text-input placeholder="Phone" aria-required="true" type="text" [(inputModel)]="newUser.Phone"></text-input>
     </div>
     <div class="register__form__item">
       <wait-button text="Get Started" classes="btn-primary btn-full" typeBtn="submit" (onClick)="onSubmit()">

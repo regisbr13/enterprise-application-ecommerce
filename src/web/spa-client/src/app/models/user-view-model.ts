@@ -2,12 +2,12 @@ export class UserViewModel {
   Id: number;
   Name: string;
   Email: string;
-  Telefone: string;
+  Phone: string;
 
   constructor(data: any = {}) {
     this.Id = data.Id;
     this.Name = data.Name;
-    this.Telefone = data.Telefone;
+    this.Phone = data.Phone;
     this.Email = data.Email;
   }
 }

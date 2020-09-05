@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'text-input',
@@ -15,17 +15,25 @@ export class TextInputComponent implements OnInit {
   @Input() subText: string;
   @Input() maxLength: number;
   @Input() textOptional: string;
-  @Input() value: string;
   @Input() inputFocus: boolean;
   @Input() ariaRequired: boolean;
+  @Input() inputModel: string;
+  @Output() inputModelChange = new EventEmitter<string>();
+  public isPassword: boolean;
 
   constructor() { }
 
   ngOnInit(): void {
+    this.isPassword = this.type === 'password' ? true : false;
   }
 
-  processChangeEvent = () => {
-
+  controlsShowPassword(): void {
+    if (this.type === 'password') {
+      this.type = 'text';
+    } else {
+      this.type = 'password';
+    }
   }
+
 
 }
