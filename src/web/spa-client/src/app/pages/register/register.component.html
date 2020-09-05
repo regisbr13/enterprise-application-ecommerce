@@ -1,21 +1,29 @@
 <div class="register">
-  <div class="register__form">
+  <form class="register__form" role="group">
     <div class="register__form__item">
       <label class="register__form__item__title">Sign Up</label>
       <br aria-hidden="true">
       <label class="register__form__item__subtitle">Create your account!</label>
     </div>
     <div class="register__form__item">
-      <text-input placeholder="E-mail" aria-required="true" type="email"></text-input>
+      <text-input placeholder="E-mail" aria-required="true" type="email" value="newUser.Email">
+      </text-input>
     </div>
     <div class="register__form__item">
-      <text-input placeholder="Password" aria-required="true" type="password"></text-input>
+      <text-input placeholder="Password" aria-required="true" type="password" value="password"></text-input>
     </div>
     <div class="register__form__item">
-      <text-input placeholder="Repeat password" aria-required="true" type="password"></text-input>
+      <text-input placeholder="Repeat password" aria-required="true" type="password" value="checkPassword"></text-input>
     </div>
     <div class="register__form__item">
-      <wait-button text="Get Started" classes="btn-primary"></wait-button>
+      <text-input placeholder="Name" aria-required="true" type="text" value="newUser.Name"></text-input>
     </div>
-  </div>
+    <div class="register__form__item">
+      <text-input placeholder="Telefone" aria-required="true" type="text" value="newUser.Telefone"></text-input>
+    </div>
+    <div class="register__form__item">
+      <wait-button text="Get Started" classes="btn-primary" type="button" (onClick)="onSubmit()">
+      </wait-button>
+    </div>
+  </form>
 </div>

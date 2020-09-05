@@ -2,8 +2,8 @@
   <label *ngIf="label" class="text-input__label">{{label}}
     <span *ngIf="hasTextOptional" class="sub-description">{{textOptional}}</span></label>
   <div class="">
-    <input class="text-input__input" type="{{type}}" blur.trigger="processBlurEvent()" (change)="processChangeEvent()" placeholder="
-        {{placeholder}}" value="{{value}}" maxlength="maxLength && optional" [attr.aria-label]="descriptionAriaLabel"
+    <input class="text-input__input" type="{{type}}" (change)="processChangeEvent()" ngModel #{{value}}
+      placeholder="{{placeholder}}" maxlength="maxLength && optional" [attr.aria-label]="descriptionAriaLabel"
       [attr.aria-required]="ariaRequired" focus="inputFocus" aria-describedby="subtext" />
     <div *ngIf="subText" class="text-input__subtext-container">
       <span class="text-input__subtext" id="subtext">{{subText}}</span>

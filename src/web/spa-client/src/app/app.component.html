@@ -1,21 +1,21 @@
-<div class="home">
-  <div class="home__container">
-    <div class="home__container__message">
-      <div class="home__container__form--logo">
-        <img src="../assets/images/logo.png">
+  <div class="home">
+    <div class="home__container">
+      <div class="home__container__message">
+        <div class="home__container__form--logo">
+          <img src="../assets/images/logo.png">
+        </div>
+      </div>
+    </div>
+    <div class="home__container">
+      <div class="home__container__form">
+        <div class="home__container__form--back" *ngIf="!login">
+          <wait-button iconclass="dm arrow-left" classes="btn-icon" (click)="changeForm()"></wait-button>
+        </div>
+        <app-login *ngIf="login"></app-login>
+        <app-register *ngIf="!login"></app-register>
+        <div class="home__container__form--next" *ngIf="login">
+          <wait-button text="Sign up" classes="btn-outline btn-full" (click)="changeForm()"></wait-button>
+        </div>
       </div>
     </div>
   </div>
-  <div class="home__container">
-    <div class="home__container__form">
-      <div class="home__container__form--back" *ngIf="!login">
-        <wait-button iconclass="dm arrow-left" classes="btn-icon" (click)="changeForm()"></wait-button>
-      </div>
-      <app-login *ngIf="login"></app-login>
-      <app-register *ngIf="!login"></app-register>
-      <div class="home__container__form--next" *ngIf="login">
-        <wait-button text="Sign up" classes="btn-outline btn-full" (click)="changeForm()"></wait-button>
-      </div>
-    </div>
-  </div>
-</div>
