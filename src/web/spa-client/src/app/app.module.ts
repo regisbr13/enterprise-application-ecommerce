@@ -8,6 +8,10 @@ import { RegisterComponent } from './pages/register/register.component';
 import { WaitButtonComponent } from './components/wait-button/wait-button.component';
 import { TextInputComponent } from './components/text-input/text-input.component';
 import { CheckboxComponent } from './components/checkbox-input/checkbox-input.component';
+import { AccessBarComponent } from './components/access-bar/access-bar.component';
+import { NavBarComponent } from './components/nav-bar/nav-bar.component';
+import { HomeComponent } from './pages/home/home.component';
+import { ProfileComponent } from './pages/profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +20,11 @@ import { CheckboxComponent } from './components/checkbox-input/checkbox-input.co
     RegisterComponent,
     WaitButtonComponent,
     TextInputComponent,
-    CheckboxComponent
+    CheckboxComponent,
+    AccessBarComponent,
+    NavBarComponent,
+    HomeComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,

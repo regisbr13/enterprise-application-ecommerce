@@ -11,10 +11,11 @@ export class WaitButtonComponent implements OnInit {
   constructor() { }
   @Input() text: string;
   @Input() iconClass: string;
-  @Input() type: string;
+  @Input() typeBtn: string;
   @Input() descriptionAriaLabel: string;
   @Input() classes: string;
   @Input() disabled: boolean;
+  @Input() btnTitle: string;
   @Output() onClick = new EventEmitter<any>();
   isWaiting = false;
 

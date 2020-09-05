@@ -1,6 +1,7 @@
 <div class="wait-button">
-  <button ngClass="btn {{classes}}" [attr.aria-disabled]="isWaiting" [attr.aria-type]="type" type="{{type}}"
-    [attr.aria-label]="descriptionAriaLabel" [attr.aria-hidden]="isWaiting" (click)="doAction($event)" [disabled]="disabled">
+  <button ngClass="btn {{classes}}" [attr.aria-disabled]="isWaiting" [attr.aria-type]="typeBtn" type="{{typeBtn}}"
+    [attr.aria-label]="descriptionAriaLabel" [attr.aria-hidden]="isWaiting" [attr.title]="btnTitle"
+    (click)="doAction($event)" [disabled]="disabled">
     <div *ngIf="isWaiting">
       <em class="dm dm-spinner animate-spin"></em>&nbsp;
     </div>
