@@ -5,8 +5,8 @@ namespace NSE.WebApp.Mvc.Interfaces
 {
     public interface IAuthService
     {
-        Task<UserLogged> Login(UserLogin user);
+        Task<UserLoggedViewModel> Login(UserLoginViewModel user);
 
-        Task<UserLogged> Register(UserRegister user);
+        Task<UserLoggedViewModel> Register(UserRegisterViewModel user);
     }
 }

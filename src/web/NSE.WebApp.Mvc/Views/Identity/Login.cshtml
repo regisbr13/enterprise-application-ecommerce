@@ -1,36 +1,39 @@
-﻿@model NSE.WebApp.Mvc.Models.UserLogin
+﻿@model NSE.WebApp.Mvc.Models.UserLoginViewModel
 
 @{
     ViewData["Title"] = "Entrar";
 }
 
-<h4>Faça login</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-route-returnurl="@ViewData["ReturnUrl"]" asp-action="Login">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Email" class="control-label"></label>
-                <input asp-for="Email" class="form-control" />
-                <span asp-validation-for="Email" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Password" class="control-label"></label>
-                <input asp-for="Password" class="form-control" />
-                <span asp-validation-for="Password" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Entrar" class="btn btn-primary" />
-                <a asp-action="register" class="btn btn-outline-dark">Registrar</a>
-            </div>
-        </form>
-    </div>
-</div>
+<section class="section-conten padding-y container" style="min-height:45vh">
 
-<div>
-    <a asp-action="Index" asp-controller="home">Voltar para home</a>
-</div>
+    <vc:Summary></vc:Summary>
+
+    <div class="card mx-auto" style="max-width: 380px; margin-top: 100px;">
+
+        <div class="card-body">
+            <h4 class="card-title mb-4">Seja bem vindo!</h4>
+            <form asp-route-returnurl="@ViewData["ReturnUrl"]" method="post">
+                <div class="form-group">
+                    <label asp-for="Email"></label>
+                    <input asp-for="Email" class="form-control" />
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Password"></label>
+                    <input type="password" asp-for="Password" class="form-control" />
+                    <span asp-validation-for="Password" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary btn-block">Entrar</button>
+                </div>
+            </form>
+        </div>
+        <div class="card-footer text-center">Ainda não tem uma conta?<a asp-controller="Identity" asp-action="Register"> Criar uma conta</a></div>
+    </div>
+
+</section>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

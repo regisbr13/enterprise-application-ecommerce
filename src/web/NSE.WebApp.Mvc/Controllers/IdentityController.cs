@@ -26,7 +26,7 @@ namespace NSE.WebApp.Mvc.Controllers
 
         [HttpPost]
         [Route("registrar")]
-        public async Task<IActionResult> Register(UserRegister user)
+        public async Task<IActionResult> Register(UserRegisterViewModel user)
         {
             if (!ModelState.IsValid) return View(user);
 
@@ -46,7 +46,7 @@ namespace NSE.WebApp.Mvc.Controllers
 
         [HttpPost]
         [Route("entrar")]
-        public async Task<IActionResult> Login(UserLogin user, string returnUrl = null)
+        public async Task<IActionResult> Login(UserLoginViewModel user, string returnUrl = null)
         {
             if (!ModelState.IsValid) return View(user);
 
@@ -68,7 +68,7 @@ namespace NSE.WebApp.Mvc.Controllers
             return RedirectToAction(nameof(Login));
         }
 
-        private async Task MakeLogin(UserLogged user)
+        private async Task MakeLogin(UserLoggedViewModel user)
         {
             var token = GetFormattedToken(user.Token);
             var claims = new List<Claim>

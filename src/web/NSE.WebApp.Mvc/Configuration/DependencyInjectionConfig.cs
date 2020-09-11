@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using NSE.WebApp.Mvc.Interfaces;
-using NSE.WebApp.Mvc.Services;
+using NSE.WebApp.Mvc.Extensions;
 
 namespace NSE.WebApp.Mvc.Configuration
 {
@@ -10,7 +10,7 @@ namespace NSE.WebApp.Mvc.Configuration
         public static IServiceCollection AddAppServices(this IServiceCollection services)
         {
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
-            services.AddSingleton<IUser, AspNetUserService>();
+            services.AddSingleton<IUser, AspNetUser>();
 
             return services;
         }

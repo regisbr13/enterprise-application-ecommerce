@@ -4,10 +4,9 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using NSE.Core.Services;
 using NSE.Identity.API.Configuration;
 using NSE.Identity.API.Data;
-using NSE.Identity.API.Extensions;
-
 namespace NSE.Identity.API
 {
     public class Startup
@@ -19,7 +18,6 @@ namespace NSE.Identity.API
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<AppDbContext>(opt => opt.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
-            services.AddScoped<DatabaseService>();
             services.AddIdentityConfiguration();
             services.AddTokenConfiguration(Configuration);
             services.AddSwaggerConfiguration();
@@ -27,12 +25,11 @@ namespace NSE.Identity.API
             services.AddControllers().ConfigureApiBehaviorOptions(opt => opt.SuppressModelStateInvalidFilter = true);
         }
 
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, DatabaseService databaseService)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, AppDbContext context)
         {
             if (env.IsDevelopment()) app.UseDeveloperExceptionPage();
 
-            databaseService.CreateDatabase();
-
+            DatabaseService.SetUpDataBase(context);
             app.UseSwaggerConfiguration();
             app.UseHttpsRedirection();
             app.UseRouting();

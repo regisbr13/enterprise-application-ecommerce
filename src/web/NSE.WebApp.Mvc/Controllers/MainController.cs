@@ -6,7 +6,7 @@ namespace NSE.WebApp.Mvc.Controllers
 {
     public abstract class MainController : Controller
     {
-        protected bool HasResponseErrors(ErrorResponse response)
+        protected bool HasResponseErrors(ErrorResponseViewModel response)
         {
             if (response != null && response.Errors.Any())
             {
