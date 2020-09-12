@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Microsoft.AspNetCore.Http;
+using System.Collections.Generic;
 using System.Security.Claims;
 
 namespace NSE.WebApp.Mvc.Interfaces
@@ -12,6 +13,8 @@ namespace NSE.WebApp.Mvc.Interfaces
         public string GetEmail();
 
         public string GetToken();
+
+        public HttpContext GetHttpContext();
 
         public bool IsAuthenticated();
 

@@ -19,6 +19,8 @@ namespace NSE.WebApp.Mvc.Extensions
 
         public string GetToken() => _accessor.HttpContext.User.GetUserToken();
 
+        public HttpContext GetHttpContext() => _accessor.HttpContext;
+
         public bool IsAuthenticated() => _accessor.HttpContext.User.Identity.IsAuthenticated;
 
         public bool IsInRole(string role) => _accessor.HttpContext.User.IsInRole(role);

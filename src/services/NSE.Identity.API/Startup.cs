@@ -7,6 +7,8 @@ using Microsoft.Extensions.Hosting;
 using NSE.Core.Services;
 using NSE.Identity.API.Configuration;
 using NSE.Identity.API.Data;
+using NSE.WebApiCore.Authentication;
+
 namespace NSE.Identity.API
 {
     public class Startup

@@ -1,7 +1,9 @@
-﻿using NSE.Catalog.API.Data;
+﻿using Microsoft.EntityFrameworkCore.Internal;
+using NSE.Catalog.API.Data;
 using NSE.Catalog.API.Models;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace NSE.Catalog.API.Services
 {
@@ -15,7 +17,12 @@ namespace NSE.Catalog.API.Services
                 new Product("Caneca No Coffee No Code", "Caneca de porcelana com impressão térmica de alta resistência.", true, 30, 5, DateTime.Now, "caneca4.jpg")
             };
 
-            context.Products.AddRange(products);
+            products.ForEach(product =>
+            {
+                if (!context.Products.Any(p => p.Name == product.Name))
+                    context.Products.Add(product);
+            });
+
             context.SaveChanges();
         }
     }

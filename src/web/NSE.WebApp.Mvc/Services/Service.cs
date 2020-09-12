@@ -4,7 +4,7 @@ using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 
-namespace NSE.WebApp.Mvc.Extensions
+namespace NSE.WebApp.Mvc.Services
 {
     public abstract class Service
     {

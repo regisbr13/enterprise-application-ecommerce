@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 using NSE.Identity.API.Dtos;
 using NSE.Identity.API.Extensions;
+using NSE.WebApiCore.Authentication;
 using System;
 using System.IdentityModel.Tokens.Jwt;
 using System.Linq;

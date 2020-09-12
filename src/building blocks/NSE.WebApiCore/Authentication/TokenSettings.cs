@@ -1,4 +1,4 @@
-﻿namespace NSE.Identity.API.Extensions
+﻿namespace NSE.WebApiCore.Authentication
 {
     public class TokenSettings
     {

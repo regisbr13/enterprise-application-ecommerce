@@ -3,7 +3,7 @@ using NSE.WebApp.Mvc.Models;
 using System.Net.Http;
 using System.Threading.Tasks;
 
-namespace NSE.WebApp.Mvc.Extensions
+namespace NSE.WebApp.Mvc.Services
 {
     public class AuthService : Service, IAuthService
     {
