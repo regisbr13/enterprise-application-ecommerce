@@ -57,7 +57,7 @@ namespace NSE.WebApp.Mvc.Controllers
 
             if (returnUrl != null) return LocalRedirect(returnUrl);
 
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Index", "Catalog");
         }
 
         [HttpGet]

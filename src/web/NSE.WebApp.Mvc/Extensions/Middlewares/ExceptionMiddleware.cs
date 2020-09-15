@@ -1,5 +1,8 @@
 ﻿using Microsoft.AspNetCore.Http;
 using NSE.WebApp.Mvc.Extensions.Exceptions;
+using Polly.CircuitBreaker;
+using Refit;
+using System;
 using System.Net;
 using System.Threading.Tasks;
 
@@ -19,16 +22,29 @@ namespace NSE.WebApp.Mvc.Extensions.Middlewares
             }
             catch (CustomHttpResponseException ex)
             {
-                HandleRequestException(httpContext, ex);
+                HandleRequestException(httpContext, ex.StatusCode);
+            }
+            catch (ApiException ex)
+            {
+                HandleRequestException(httpContext, ex.StatusCode);
+            }
+            catch (BrokenCircuitException)
+            {
+                HandleCircuitBreakException(httpContext);
             }
         }
 
-        private void HandleRequestException(HttpContext httpContext, CustomHttpResponseException exception)
+        private void HandleRequestException(HttpContext httpContext, HttpStatusCode statusCode)
         {
-            httpContext.Response.StatusCode = (int)exception.StatusCode;
+            httpContext.Response.StatusCode = (int)statusCode;
 
-            if (exception.StatusCode == HttpStatusCode.Unauthorized)
+            if (statusCode == HttpStatusCode.Unauthorized)
                 httpContext.Response.Redirect($"/entrar?ReturnUrl={httpContext.Request.Path}");
+        }
+
+        private void HandleCircuitBreakException(HttpContext httpContext)
+        {
+            httpContext.Response.Redirect("/sistema-indisponivel");
         }
     }
 }

@@ -3,16 +3,19 @@ using NSE.WebApp.Mvc.Models;
 
 namespace NSE.WebApp.Mvc.Controllers
 {
-    public class HomeController : Controller
+    public class ErrorController : Controller
     {
-        public IActionResult Index()
+        [HttpGet("sistema-indisponivel")]
+        public IActionResult Error()
         {
-            return View();
-        }
+            var errorViewModel = new ErrorViewModel
+            {
+                Title = "Sistema indisponível!",
+                Message = "O sistema está temporariamente indisponível. Por favor alguns instantes e tente novamente.",
+                Code = 500,
+            };
 
-        public IActionResult Privacy()
-        {
-            return View();
+            return View(errorViewModel);
         }
 
         [HttpGet("erro/{errorCode:length(3,3)}")]
