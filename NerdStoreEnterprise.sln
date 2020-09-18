@@ -29,7 +29,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Order", "Order", "{89A6FB2C
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NSE.Catalog.API", "src\services\NSE.Catalog.API\NSE.Catalog.API.csproj", "{0E72BFF9-9CE0-4079-8EC9-891CEB58C5EF}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NSE.Customer.API", "src\services\NSE.Customer.API\NSE.Customer.API.csproj", "{DE8E07A8-7114-4A3B-8EB8-8663F1EE95C7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NSE.Customers.API", "src\services\NSE.Customer.API\NSE.Customers.API.csproj", "{DE8E07A8-7114-4A3B-8EB8-8663F1EE95C7}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NSE.Order.API", "src\services\NSE.Order.API\NSE.Order.API.csproj", "{5B397FA6-DEFD-433C-A9B7-1DDAA9147CD0}"
 EndProject
@@ -43,7 +43,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NSE.WebApp.Mvc", "src\web\N
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{3B1AA9E7-7515-424E-99B5-A9FE3F89881D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NSE.WebApiCore", "src\building blocks\NSE.WebApiCore\NSE.WebApiCore.csproj", "{B1D6CB07-9B69-45B6-B44C-C5DF6128A4A6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NSE.WebApiCore", "src\building blocks\NSE.WebApiCore\NSE.WebApiCore.csproj", "{B1D6CB07-9B69-45B6-B44C-C5DF6128A4A6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

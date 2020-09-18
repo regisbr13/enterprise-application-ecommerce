@@ -9,6 +9,7 @@ using NSE.Catalog.API.Data;
 using NSE.Catalog.API.Services;
 using NSE.Core.Services;
 using NSE.WebApiCore.Authentication;
+using NSE.WebApiCore.Configuration;
 
 namespace NSE.Catalog.API
 {
@@ -16,13 +17,14 @@ namespace NSE.Catalog.API
     {
         public Startup(IConfiguration configuration) => Configuration = configuration;
 
+        private const string ApiName = "Catálogo";
         public IConfiguration Configuration { get; }
 
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<CatalogContext>(opt => opt.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             services.AddDependencyInjectionConfig();
-            services.AddSwaggerConfiguration();
+            services.AddSwaggerConfiguration(ApiName);
             services.AddTokenConfiguration(Configuration);
 
             //services.AddCors(opt => opt.AddPolicy("Development", builder => builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader()));
@@ -40,7 +42,7 @@ namespace NSE.Catalog.API
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseSwaggerConfiguration();
+            app.UseSwaggerConfiguration(ApiName);
             app.UseHttpsRedirection();
             app.UseRouting();
             app.UseAuthentication();

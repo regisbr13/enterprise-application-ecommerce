@@ -1,45 +1,44 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
+using NSE.Core.Services;
+using NSE.Customers.API.Configuration;
+using NSE.Customers.API.Data;
+using NSE.WebApiCore.Authentication;
+using NSE.WebApiCore.Configuration;
 
-namespace NSE.Customer.API
+namespace NSE.Customers.API
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
-        {
-            Configuration = configuration;
-        }
+        public Startup(IConfiguration configuration) => Configuration = configuration;
 
+        private const string ApiName = "Clientes";
         public IConfiguration Configuration { get; }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDbContext<CustomersContext>(opt => opt.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            services.AddDependencyInjectionConfig();
+            services.AddSwaggerConfiguration(ApiName);
+            services.AddTokenConfiguration(Configuration);
             services.AddControllers();
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, CustomersContext context)
         {
             if (env.IsDevelopment())
             {
+                DatabaseService.SetUpDataBase(context);
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseSwaggerConfiguration(ApiName);
             app.UseHttpsRedirection();
-
             app.UseRouting();
-
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

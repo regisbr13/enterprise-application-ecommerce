@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
-namespace NSE.Customer.API.Controllers
+namespace NSE.Customers.API.Controllers
 {
     [ApiController]
     [Route("[controller]")]
