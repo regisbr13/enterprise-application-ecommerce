@@ -1,4 +1,4 @@
-﻿using NSE.WebApp.Mvc.Interfaces;
+﻿using NSE.WebApiCore.User;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading;
@@ -8,9 +8,9 @@ namespace NSE.WebApp.Mvc.Services.Handlers
 {
     public class HttpClientAuthorizationDelegatingHandler : DelegatingHandler
     {
-        private readonly IUser _user;
+        private readonly IAspNetUser _user;
 
-        public HttpClientAuthorizationDelegatingHandler(IUser user)
+        public HttpClientAuthorizationDelegatingHandler(IAspNetUser user)
             => _user = user;
 
         protected override Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)

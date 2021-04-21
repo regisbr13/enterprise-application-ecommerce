@@ -7,6 +7,8 @@ using Microsoft.Extensions.Hosting;
 using NSE.Core.Services;
 using NSE.Identity.API.Configuration;
 using NSE.Identity.API.Data;
+using NSE.MessageBus;
+
 using NSE.WebApiCore.Authentication;
 
 namespace NSE.Identity.API
@@ -19,9 +21,10 @@ namespace NSE.Identity.API
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<AppDbContext>(opt => opt.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            services.AddDbContext<AppDbContext>(opt => opt.UseSqlServer(Configuration.GetConnectionString("DbConnection")));
             services.AddIdentityConfiguration();
             services.AddTokenConfiguration(Configuration);
+            services.AddMessageBus(Configuration);
             services.AddSwaggerConfiguration();
 
             services.AddControllers().ConfigureApiBehaviorOptions(opt => opt.SuppressModelStateInvalidFilter = true);

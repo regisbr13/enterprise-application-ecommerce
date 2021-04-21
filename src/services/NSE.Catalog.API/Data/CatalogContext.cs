@@ -11,7 +11,7 @@ namespace NSE.Catalog.API.Data
         {
         }
 
-        protected override void OnModelCreating(ModelBuilder builder)
-            => builder.ApplyConfigurationsFromAssembly(typeof(CatalogContext).Assembly);
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+            => modelBuilder.ApplyConfigurationsFromAssembly(typeof(CatalogContext).Assembly);
     }
 }

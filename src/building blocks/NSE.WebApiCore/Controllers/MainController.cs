@@ -1,8 +1,10 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using FluentValidation.Results;
+using Microsoft.AspNetCore.Mvc;
+using NSE.Core.MediatR;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace NSE.Identity.API.Controllers
+namespace NSE.WebApiCore.Controllers
 {
     [ApiController]
     public abstract class MainController : ControllerBase
@@ -25,6 +27,20 @@ namespace NSE.Identity.API.Controllers
             if (OperationIsValid()) return Ok(result);
 
             return BadRequest(new { errors = Errors });
+        }
+
+        protected ActionResult CustomResponse(RequestResult result)
+        {
+            if (result.IsValid) return Ok(result.Content);
+
+            return Ok(new { errors = result.ValidationResult.Errors.Select(e => e.ErrorMessage) });
+        }
+
+        protected ActionResult CustomResponse(ValidationResult result)
+        {
+            if (result.IsValid) return Ok();
+
+            return BadRequest(new { errors = result.Errors.Select(e => e.ErrorMessage) });
         }
     }
 }

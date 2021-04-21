@@ -24,5 +24,21 @@ namespace NSE.WebApp.Mvc.Extensions.Razor
 
         public static string FormatCurrency(this RazorPage razor, decimal value)
             => value > 0 ? value.ToString("C2", Thread.CurrentThread.CurrentCulture) : "Gratuito";
+
+        public static string ProductsByUnit(this RazorPage razor, int quantity)
+            => quantity > 1 ? $"{quantity} unidades" : $"{quantity} unidade";
+
+        public static string SelectOptionsByQuantity(this RazorPage razor, int quantity, int selectedValue = 0)
+        {
+            var sb = new StringBuilder();
+            for (var i = 1; i <= quantity; i++)
+            {
+                var selected = "";
+                if (i == selectedValue) selected = "selected";
+                sb.Append($"<option {selected} value='{i}'>{i}</option>");
+            }
+
+            return sb.ToString();
+        }
     }
 }

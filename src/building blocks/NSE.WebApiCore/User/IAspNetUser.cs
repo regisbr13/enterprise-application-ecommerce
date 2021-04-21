@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Security.Claims;
 
-namespace NSE.WebApp.Mvc.Interfaces
+namespace NSE.WebApiCore.User
 {
-    public interface IUser
+    public interface IAspNetUser
     {
         public string GetId();
 

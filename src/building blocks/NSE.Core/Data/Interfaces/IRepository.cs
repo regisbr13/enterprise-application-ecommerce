@@ -7,10 +7,14 @@ namespace NSE.Core.Data.Interfaces
 {
     public interface IRepository<T> where T : Entity
     {
-        Task<IEnumerable<T>> GetAll();
+        Task<IEnumerable<T>> GetAllAsync();
 
-        Task<T> GetById(Guid id);
+        Task<T> GetByIdAsync(Guid id);
 
-        Task<int> SaveChanges();
+        Task<bool> InsertAsync(T obj);
+
+        Task<bool> UpdateAsync(T obj);
+
+        Task<bool> DeleteAsync(T obj);
     }
 }

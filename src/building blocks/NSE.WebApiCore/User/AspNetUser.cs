@@ -1,11 +1,10 @@
 ﻿using Microsoft.AspNetCore.Http;
-using NSE.WebApp.Mvc.Interfaces;
 using System.Collections.Generic;
 using System.Security.Claims;
 
-namespace NSE.WebApp.Mvc.Extensions
+namespace NSE.WebApiCore.User
 {
-    public class AspNetUser : IUser
+    public class AspNetUser : IAspNetUser
     {
         private readonly IHttpContextAccessor _accessor;
 

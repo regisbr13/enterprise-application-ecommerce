@@ -23,6 +23,11 @@ namespace NSE.WebApp.Mvc.Configuration
                 .AddTypedClient(RestService.For<ICatalogService>)
                 .AddTransientHttpErrorPolicy(p => p.CircuitBreakerAsync(1, TimeSpan.FromSeconds(10)));
 
+            services.AddHttpClient("ShoppingCartRefit", opt => opt.BaseAddress = new Uri(settings.ShoppingCartUrl))
+                .AddHttpMessageHandler<HttpClientAuthorizationDelegatingHandler>()
+                .AddTypedClient(RestService.For<IShoppingCartService>)
+                .AddTransientHttpErrorPolicy(p => p.CircuitBreakerAsync(1, TimeSpan.FromSeconds(10)));
+
             return services;
         }
     }

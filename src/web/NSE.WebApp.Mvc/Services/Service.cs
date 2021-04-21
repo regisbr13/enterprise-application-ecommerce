@@ -8,6 +8,10 @@ namespace NSE.WebApp.Mvc.Services
 {
     public abstract class Service
     {
+        protected readonly HttpClient _httpClient;
+
+        protected Service(HttpClient client) => _httpClient = client;
+
         protected StringContent GetContent(object data)
             => new StringContent(JsonSerializer.Serialize(data), Encoding.UTF8, "application/json");
 

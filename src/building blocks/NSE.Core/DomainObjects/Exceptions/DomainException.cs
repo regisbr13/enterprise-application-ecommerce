@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Runtime.Serialization;
 
 namespace NSE.Core.DomainObjects.Exceptions
 {
+    [Serializable]
     public class DomainException : Exception
     {
         public DomainException()
@@ -13,6 +15,10 @@ namespace NSE.Core.DomainObjects.Exceptions
         }
 
         public DomainException(string message, Exception innerException) : base(message, innerException)
+        {
+        }
+
+        protected DomainException(SerializationInfo serializationInfo, StreamingContext streamingContext) : base(serializationInfo, streamingContext)
         {
         }
     }

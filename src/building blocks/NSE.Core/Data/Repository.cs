@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 
 namespace NSE.Core.Data
 {
-    public class Repository<T> : IRepository<T> where T : Entity
+    public abstract class Repository<T> : IRepository<T> where T : Entity
     {
         protected DbContext _context;
-        private readonly DbSet<T> _currentSet;
+        protected readonly DbSet<T> _currentSet;
 
         protected Repository(DbContext context)
         {
@@ -18,13 +18,31 @@ namespace NSE.Core.Data
             _currentSet = context.Set<T>();
         }
 
-        public async Task<IEnumerable<T>> GetAll()
+        public async Task<IEnumerable<T>> GetAllAsync()
             => await _currentSet.AsNoTracking().ToListAsync();
 
-        public async Task<T> GetById(Guid id)
+        public async Task<T> GetByIdAsync(Guid id)
             => await _currentSet.AsNoTracking().FirstOrDefaultAsync(e => e.Id == id);
 
-        public async Task<int> SaveChanges()
-            => await _context.SaveChangesAsync();
+        public async Task<bool> InsertAsync(T obj)
+        {
+            _currentSet.Add(obj);
+            return await SaveChangesAsync();
+        }
+
+        public async Task<bool> UpdateAsync(T obj)
+        {
+            _currentSet.Update(obj);
+            return await SaveChangesAsync();
+        }
+
+        public async Task<bool> DeleteAsync(T obj)
+        {
+            _currentSet.Remove(obj);
+            return await SaveChangesAsync();
+        }
+
+        protected async Task<bool> SaveChangesAsync()
+            => await _context.SaveChangesAsync() > 0;
     }
 }

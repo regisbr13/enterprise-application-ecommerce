@@ -16,5 +16,7 @@ namespace NSE.WebApp.Mvc.Controllers
 
             return false;
         }
+
+        protected void NotifyError(string errorMessage) => ModelState.AddModelError(string.Empty, errorMessage);
     }
 }

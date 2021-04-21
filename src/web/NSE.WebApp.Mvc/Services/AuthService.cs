@@ -7,9 +7,9 @@ namespace NSE.WebApp.Mvc.Services
 {
     public class AuthService : Service, IAuthService
     {
-        private readonly HttpClient _httpClient;
-
-        public AuthService(HttpClient httpClient) => _httpClient = httpClient;
+        public AuthService(HttpClient httpClient) : base(httpClient)
+        {
+        }
 
         public async Task<UserLoggedViewModel> Login(UserLoginViewModel user)
         {

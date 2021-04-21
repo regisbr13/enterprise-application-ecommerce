@@ -15,10 +15,7 @@ namespace NSE.WebApp.Mvc.Controllers
     {
         private readonly IAuthService _service;
 
-        public IdentityController(IAuthService service)
-        {
-            _service = service;
-        }
+        public IdentityController(IAuthService service) => _service = service;
 
         [HttpGet]
         [Route("registrar")]
@@ -31,9 +28,11 @@ namespace NSE.WebApp.Mvc.Controllers
             if (!ModelState.IsValid) return View(user);
 
             var response = await _service.Register(user);
+            if (HasResponseErrors(response.ErrorResponse)) return View(user);
+
             await MakeLogin(response);
 
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Index", "Catalog");
         }
 
         [HttpGet]

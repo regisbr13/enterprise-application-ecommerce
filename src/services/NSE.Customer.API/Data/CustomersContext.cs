@@ -11,8 +11,6 @@ namespace NSE.Customers.API.Data
 
         public CustomersContext(DbContextOptions<CustomersContext> options) : base(options)
         {
-            ChangeTracker.QueryTrackingBehavior = QueryTrackingBehavior.NoTracking;
-            ChangeTracker.AutoDetectChangesEnabled = false;
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

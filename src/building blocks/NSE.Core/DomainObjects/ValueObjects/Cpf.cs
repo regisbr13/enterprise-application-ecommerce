@@ -6,6 +6,7 @@ namespace NSE.Core.DomainObjects.ValueObjects
     public class Cpf
     {
         public const int CpfMaxLength = 11;
+        public const string ErrorMessage = "Cpf inválido";
         public string Number { get; private set; }
 
         //Constructor for EF
@@ -15,8 +16,8 @@ namespace NSE.Core.DomainObjects.ValueObjects
 
         public Cpf(string number)
         {
-            if (!IsValid(number)) throw new DomainException("Cpf inválido");
-            Number = number;
+            if (!IsValid(number)) throw new DomainException(ErrorMessage);
+            Number = number.OnlyNumbers(number);
         }
 
         public static bool IsValid(string cpf)

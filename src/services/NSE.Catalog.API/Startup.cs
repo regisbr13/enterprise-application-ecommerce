@@ -22,12 +22,10 @@ namespace NSE.Catalog.API
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<CatalogContext>(opt => opt.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            services.AddDbContext<CatalogContext>(opt => opt.UseSqlServer(Configuration.GetConnectionString("DbConnection")));
             services.AddDependencyInjectionConfig();
             services.AddSwaggerConfiguration(ApiName);
             services.AddTokenConfiguration(Configuration);
-
-            //services.AddCors(opt => opt.AddPolicy("Development", builder => builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader()));
 
             services.AddControllers();
         }
@@ -38,7 +36,6 @@ namespace NSE.Catalog.API
             {
                 DatabaseService.SetUpDataBase(context);
                 SeedService.Seed(context);
-                //app.UseCors("Development");
                 app.UseDeveloperExceptionPage();
             }
 

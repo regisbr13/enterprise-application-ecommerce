@@ -1,10 +1,10 @@
 ﻿using System.Security.Claims;
 
-namespace NSE.WebApp.Mvc.Extensions
+namespace NSE.WebApiCore.User
 {
     public static class ClaimsPrincipalExtensions
     {
-        public static string GetUserId(this ClaimsPrincipal claims) => claims?.FindFirst("sub")?.Value;
+        public static string GetUserId(this ClaimsPrincipal claims) => claims?.FindFirst(ClaimTypes.NameIdentifier)?.Value;
 
         public static string GetUserEmail(this ClaimsPrincipal claims) => claims?.FindFirst("email")?.Value;
 

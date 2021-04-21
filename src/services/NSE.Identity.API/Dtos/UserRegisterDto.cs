@@ -5,6 +5,12 @@ namespace NSE.Identity.API.Dtos
     public class UserRegisterDto
     {
         [Required(ErrorMessage = "O campo {0} é obrigatório")]
+        public string Name { get; set; }
+
+        [Required(ErrorMessage = "O campo {0} é obrigatório")]
+        public string Cpf { get; set; }
+
+        [Required(ErrorMessage = "O campo {0} é obrigatório")]
         [EmailAddress(ErrorMessage = "Insira um email válido")]
         public string Email { get; set; }
 

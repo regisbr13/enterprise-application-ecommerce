@@ -1,7 +1,8 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
+using NSE.WebApiCore.User;
 using NSE.WebApp.Mvc.Interfaces;
-using NSE.WebApp.Mvc.Extensions;
+using NSE.WebApp.Mvc.Services;
 using NSE.WebApp.Mvc.Services.Handlers;
 
 namespace NSE.WebApp.Mvc.Configuration
@@ -12,7 +13,7 @@ namespace NSE.WebApp.Mvc.Configuration
         {
             services.AddTransient<HttpClientAuthorizationDelegatingHandler>();
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
-            services.AddSingleton<IUser, AspNetUser>();
+            services.AddSingleton<IAspNetUser, AspNetUser>();
 
             return services;
         }
