@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.OpenApi.Models;
+using System;
 
 namespace NSE.WebApiCore.Configuration
 {
@@ -34,7 +35,7 @@ namespace NSE.WebApiCore.Configuration
                     {
                         Reference = new OpenApiReference { Id = "Bearer", Type = ReferenceType.SecurityScheme }
                     },
-                    new string[] {}
+                    Array.Empty<string>()
                     }
                 });
             });

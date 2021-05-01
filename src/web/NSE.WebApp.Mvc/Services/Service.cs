@@ -13,7 +13,7 @@ namespace NSE.WebApp.Mvc.Services
         protected Service(HttpClient client) => _httpClient = client;
 
         protected StringContent GetContent(object data)
-            => new StringContent(JsonSerializer.Serialize(data), Encoding.UTF8, "application/json");
+            => new(JsonSerializer.Serialize(data), Encoding.UTF8, "application/json");
 
         protected async Task<T> DeserializeObjectResponse<T>(HttpResponseMessage response)
         {

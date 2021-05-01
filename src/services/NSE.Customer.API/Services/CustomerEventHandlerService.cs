@@ -41,11 +41,9 @@ namespace NSE.Customers.API.Application.EventHandlers
         {
             var customerRequest = new RegisterCustomerRequest(request.Id, request.Name, request.Email, request.Cpf);
 
-            using (var scope = _serviceProvider.CreateScope())
-            {
-                var mediator = scope.ServiceProvider.GetRequiredService<IMediator>();
-                return new ResponseMessage(await mediator.Send(customerRequest));
-            }
+            using var scope = _serviceProvider.CreateScope();
+            var mediator = scope.ServiceProvider.GetRequiredService<IMediator>();
+            return new ResponseMessage(await mediator.Send(customerRequest));
         }
     }
 }

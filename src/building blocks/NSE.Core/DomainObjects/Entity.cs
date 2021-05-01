@@ -8,7 +8,7 @@ namespace NSE.Core.DomainObjects
 
         public override bool Equals(object obj)
         {
-            if (!(obj is Entity compareTo)) return false;
+            if (obj is not Entity compareTo) return false;
             if (ReferenceEquals(this, compareTo)) return true;
 
             return Id.Equals(compareTo.Id);

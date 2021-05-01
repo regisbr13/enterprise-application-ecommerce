@@ -2,7 +2,6 @@
 using NSE.WebApp.Mvc.Extensions.Exceptions;
 using Polly.CircuitBreaker;
 using Refit;
-using System;
 using System.Net;
 using System.Threading.Tasks;
 
@@ -34,7 +33,7 @@ namespace NSE.WebApp.Mvc.Extensions.Middlewares
             }
         }
 
-        private void HandleRequestException(HttpContext httpContext, HttpStatusCode statusCode)
+        private static void HandleRequestException(HttpContext httpContext, HttpStatusCode statusCode)
         {
             httpContext.Response.StatusCode = (int)statusCode;
 
@@ -42,9 +41,7 @@ namespace NSE.WebApp.Mvc.Extensions.Middlewares
                 httpContext.Response.Redirect($"/entrar?ReturnUrl={httpContext.Request.Path}");
         }
 
-        private void HandleCircuitBreakException(HttpContext httpContext)
-        {
-            httpContext.Response.Redirect("/sistema-indisponivel");
-        }
+        private static void HandleCircuitBreakException(HttpContext httpContext)
+            => httpContext.Response.Redirect("/sistema-indisponivel");
     }
 }

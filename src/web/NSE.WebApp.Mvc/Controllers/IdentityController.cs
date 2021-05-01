@@ -86,6 +86,6 @@ namespace NSE.WebApp.Mvc.Controllers
             await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(claimsIdentity), authProperties);
         }
 
-        private JwtSecurityToken GetFormattedToken(string token) => new JwtSecurityTokenHandler().ReadToken(token) as JwtSecurityToken;
+        private static JwtSecurityToken GetFormattedToken(string token) => new JwtSecurityTokenHandler().ReadToken(token) as JwtSecurityToken;
     }
 }

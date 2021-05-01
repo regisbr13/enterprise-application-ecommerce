@@ -12,7 +12,7 @@ namespace NSE.MessageBus
     {
         private IBus _bus;
         private readonly string _connectionString;
-        public bool IsConnected => _bus?.IsConnected ?? false;
+        public bool IsConnected => _bus?.Advanced.IsConnected ?? false;
         public IAdvancedBus AdvancedBus => _bus?.Advanced;
 
         public MessageBus(string connectionString)
@@ -26,7 +26,7 @@ namespace NSE.MessageBus
             where TResponse : ResponseMessage
         {
             TryConnect();
-            return await _bus.RequestAsync<TRequest, TResponse>(request);
+            return await _bus.Rpc.RequestAsync<TRequest, TResponse>(request);
         }
 
         public IDisposable RespondAsync<TRequest, TResponse>(Func<TRequest, Task<TResponse>> responder)
@@ -34,7 +34,7 @@ namespace NSE.MessageBus
             where TResponse : ResponseMessage
         {
             TryConnect();
-            return _bus.RespondAsync(responder);
+            return _bus.Rpc.Respond(responder);
         }
 
         private void TryConnect()
@@ -54,9 +54,6 @@ namespace NSE.MessageBus
             policy.Execute(() => TryConnect());
         }
 
-        public void Dispose()
-        {
-            _bus?.Dispose();
-        }
+        public void Dispose() => _bus?.Dispose();
     }
 }

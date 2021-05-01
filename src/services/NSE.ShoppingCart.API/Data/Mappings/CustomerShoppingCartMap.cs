@@ -10,7 +10,7 @@ namespace NSE.ShoppingCart.API.Data.Mappings
         {
             builder.HasKey(p => p.Id);
             builder.Property(p => p.TotalValue).IsRequired().HasColumnType("decimal");
-            builder.HasIndex(p => p.CustomerId).HasName("IDX_Customer");
+            builder.HasIndex(p => p.CustomerId).HasDatabaseName("IDX_Customer");
             builder.HasMany(p => p.Items).WithOne(c => c.CustomerShoppingCart).OnDelete(DeleteBehavior.Cascade);
             builder.ToTable("ShoppingCarts");
         }
