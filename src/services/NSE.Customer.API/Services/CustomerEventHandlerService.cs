@@ -43,7 +43,8 @@ namespace NSE.Customers.API.Application.EventHandlers
 
             using var scope = _serviceProvider.CreateScope();
             var mediator = scope.ServiceProvider.GetRequiredService<IMediator>();
-            return new ResponseMessage(await mediator.Send(customerRequest));
+            var requestResult = await mediator.Send(customerRequest);
+            return new ResponseMessage { ValidationResult = requestResult.ValidationResult };
         }
     }
 }

@@ -47,7 +47,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NSE.WebApiCore", "src\build
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MessageBus", "MessageBus", "{8EC41F91-A41B-4028-A34B-2D46A01F216F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NSE.MessageBus", "src\building blocks\NSE.MessageBus\NSE.MessageBus.csproj", "{B2AA4F00-5ECF-4E42-8968-BCC7DBE6816F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NSE.MessageBus", "src\building blocks\NSE.MessageBus\NSE.MessageBus.csproj", "{B2AA4F00-5ECF-4E42-8968-BCC7DBE6816F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tools", "tools", "{5766799C-02B3-4F10-916D-46476463F1B6}"
+	ProjectSection(SolutionItems) = preProject
+		rabbitmq-docker-compose.yml = rabbitmq-docker-compose.yml
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

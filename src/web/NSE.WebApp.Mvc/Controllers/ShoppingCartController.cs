@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using NSE.Core.Utils;
 using NSE.WebApp.Mvc.Interfaces;
 using NSE.WebApp.Mvc.Models;
 using System;
@@ -26,14 +27,18 @@ namespace NSE.WebApp.Mvc.Controllers
         public async Task<ActionResult> AddItem(ItemShoppingCartViewModel item)
         {
             var product = await _catalogService.GetById(item.ProductId);
-            if (!ProductAndQuantityIsValid(product, item.Quantity))
+            if (!ProductIsValid(product, item.ProductId))
+                return View(nameof(Index), await _shoppingCartService.Get());
+
+            if (!ProductQuantityIsValid(product, item.Quantity))
                 return View(nameof(Index), await _shoppingCartService.Get());
 
             item.Name = product.Name;
             item.Image = product.Image;
             item.Value = product.Value;
             var response = await _shoppingCartService.Post(item);
-            if (HasResponseErrors(response)) return View(nameof(Index), await _shoppingCartService.Get());
+            if (HasResponseErrors(response))
+                return View(nameof(Index), await _shoppingCartService.Get());
 
             return RedirectToAction(nameof(Index));
         }
@@ -44,12 +49,16 @@ namespace NSE.WebApp.Mvc.Controllers
         public async Task<ActionResult> UpdateItem(Guid productId, int quantity)
         {
             var product = await _catalogService.GetById(productId);
-            if (!ProductAndQuantityIsValid(product, quantity))
+            if (!ProductIsValid(product, productId))
+                return View(nameof(Index), await _shoppingCartService.Get());
+
+            if (!ProductQuantityIsValid(product, quantity))
                 return View(nameof(Index), await _shoppingCartService.Get());
 
             var item = new ItemShoppingCartViewModel { ProductId = productId, Quantity = quantity };
             var response = await _shoppingCartService.Put(productId, item);
-            if (HasResponseErrors(response)) return View(nameof(Index), await _shoppingCartService.Get());
+            if (HasResponseErrors(response))
+                return View(nameof(Index), await _shoppingCartService.Get());
 
             return RedirectToAction(nameof(Index));
         }
@@ -62,27 +71,33 @@ namespace NSE.WebApp.Mvc.Controllers
             var product = await _catalogService.GetById(productId);
             if (product is null)
             {
-                NotifyError($"O produto com o id {productId} não foi encontrado");
+                NotifyError(Resources.ProductNotFound(productId));
                 return View(nameof(Index), await _shoppingCartService.Get());
             }
 
             var response = await _shoppingCartService.Delete(productId);
-            if (HasResponseErrors(response)) return View(nameof(Index), await _shoppingCartService.Get());
+            if (HasResponseErrors(response)) 
+                return View(nameof(Index), await _shoppingCartService.Get());
 
             return RedirectToAction(nameof(Index));
         }
 
-        private bool ProductAndQuantityIsValid(ProductViewModel product, int quantity)
+        private bool ProductIsValid(ProductViewModel product, Guid productId)
         {
             if (product is null)
             {
-                NotifyError($"O produto não foi encontrado");
+                NotifyError(Resources.ProductNotFound(productId));
                 return false;
             }
 
+            return true;
+        }
+
+        private bool ProductQuantityIsValid(ProductViewModel product, int quantity)
+        {
             if (quantity > product.StockQuantity)
             {
-                NotifyError($"O produto {product.Name} possui apenas {product.StockQuantity} unidades em estoque");
+                NotifyError(Resources.ProductInvalidQuantity(product.Name, quantity));
                 return false;
             }
 
