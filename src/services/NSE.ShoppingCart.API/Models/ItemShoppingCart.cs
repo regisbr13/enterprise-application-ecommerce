@@ -18,7 +18,7 @@ namespace NSE.ShoppingCart.API.Models
         [JsonIgnore]
         public CustomerShoppingCart CustomerShoppingCart { get; set; }
 
-        public ItemShoppingCart()
+        protected ItemShoppingCart()
         {
         }
 

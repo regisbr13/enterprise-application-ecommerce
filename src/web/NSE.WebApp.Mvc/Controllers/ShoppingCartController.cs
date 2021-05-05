@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using NSE.Core.Utils;
 using NSE.WebApp.Mvc.Interfaces;
 using NSE.WebApp.Mvc.Models;
@@ -8,6 +9,7 @@ using System.Threading.Tasks;
 namespace NSE.WebApp.Mvc.Controllers
 {
     [Route("carrinho")]
+    [Authorize]
     public class ShoppingCartController : MainController
     {
         private readonly IShoppingCartService _shoppingCartService;
@@ -76,7 +78,7 @@ namespace NSE.WebApp.Mvc.Controllers
             }
 
             var response = await _shoppingCartService.Delete(productId);
-            if (HasResponseErrors(response)) 
+            if (HasResponseErrors(response))
                 return View(nameof(Index), await _shoppingCartService.Get());
 
             return RedirectToAction(nameof(Index));
@@ -97,7 +99,7 @@ namespace NSE.WebApp.Mvc.Controllers
         {
             if (quantity > product.StockQuantity)
             {
-                NotifyError(Resources.ProductInvalidQuantity(product.Name, quantity));
+                NotifyError(Resources.ProductInvalidQuantity(product.Name, product.StockQuantity));
                 return false;
             }
 

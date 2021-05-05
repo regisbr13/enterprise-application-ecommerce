@@ -33,7 +33,7 @@ namespace NSE.WebApp.Mvc.Extensions.Razor
             var sb = new StringBuilder();
             for (var i = 1; i <= quantity; i++)
             {
-                var selected = "";
+                var selected = string.Empty;
                 if (i == selectedValue) selected = "selected";
                 sb.Append($"<option {selected} value='{i}'>{i}</option>");
             }

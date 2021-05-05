@@ -1,5 +1,6 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using NSE.Core.Utils;
 using NSE.ShoppingCart.API.Application.Requests;
 using NSE.ShoppingCart.API.Models;
 using NSE.WebApiCore.Controllers;
@@ -28,7 +29,7 @@ namespace NSE.ShoppingCart.API.Controllers
         {
             if (productId != request.ProductId)
             {
-                NotifyError("Id's dos produtos não correspondem");
+                NotifyError(Resources.ProductsIdsDontMatch);
                 return CustomResponse();
             }
 
