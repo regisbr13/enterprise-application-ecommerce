@@ -1,0 +1,17 @@
+<div class="text-input">
+  <label *ngIf="label" class="text-input__label">{{label}}
+    <span *ngIf="hasTextOptional" class="sub-description">{{textOptional}}</span></label>
+  <div class="text-input-reference">
+    <input class="text-input__input" type="{{type}}" (ngModelChange)="inputModelChange.emit(inputModel)"
+      placeholder="{{placeholder}}" maxlength="maxLength && optional" [attr.aria-label]="descriptionAriaLabel"
+      [attr.aria-required]="ariaRequired" focus="inputFocus" aria-describedby="subtext" />
+    <div *ngIf="subText" class="text-input__subtext-container">
+      <span class="text-input__subtext" id="subtext">{{subText}}</span>
+      <div *ngIf="hasMaxLength">
+        <span class="text-input-subtext">{{inputModel ? inputModel.length : 0 }}/{{maxLength}}</span>
+      </div>
+    </div>
+    <i ngClass="text-input__icon {{type === 'password' ? 'eye slash outline icon' : 'eye icon'}}" *ngIf="isPassword"
+      (click)="controlsShowPassword()" title="{{type === 'password' ? 'Mostrar' : 'Esconder'}} senha"> </i>
+  </div>
+</div>

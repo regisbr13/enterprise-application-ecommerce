@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+
 
 @Component({
   selector: 'app-root',
@@ -6,5 +8,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.styl']
 })
 export class AppComponent {
-  title = 'spa-client';
+  login = true;
+
+  changeForm(): void {
+    this.login = !this.login;
+  }
 }
